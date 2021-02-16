@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityNotFoundException;
+
 @Transactional
 @Service(value="orderServices")
 public class OrderServiceImpl implements OrderServices
@@ -18,5 +20,13 @@ public class OrderServiceImpl implements OrderServices
     public Order save(Order order)
     {
         return orderRepository.save(order);
+    }
+
+    @Override
+    public Order getOrderById(long id)
+    {
+        Order order = orderRepository.findById(id)
+            .orElseThrow(() -> new EntityNotFoundException("Order " + id + " Not Found"));
+        return order;
     }
 }
