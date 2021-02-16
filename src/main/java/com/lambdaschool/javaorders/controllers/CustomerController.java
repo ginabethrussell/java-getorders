@@ -20,8 +20,8 @@ public class CustomerController
     @Autowired
     private CustomerServices customerServices;
 
-    //http://localhost:2019/customers/orders
-    // returns a list of all customers including their orders
+    // http://localhost:2019/customers/orders
+    // Returns all customers with their orders
     @GetMapping(value = "/orders", produces = "application/json")
     public ResponseEntity<?> getAllCustomers()
     {
@@ -30,8 +30,8 @@ public class CustomerController
             HttpStatus.OK);
     }
 
-    //http://localhost:2019/customers/customer/{id}
-    // returns a customer by id
+    // http://localhost:2019/customers/customer/{id}
+    // Returns the customer and their orders with the given customer id
     @GetMapping(value = "/customer/{id}", produces = "application/json")
     public ResponseEntity<?> getCustomerById(@PathVariable long id)
     {
@@ -40,8 +40,8 @@ public class CustomerController
             HttpStatus.OK);
     }
 
-    //http://localhost:2019/customers/namelike/{likename}
-    // returns a customer by id
+    // http://localhost:2019/customers/namelike/{likename}
+    // Returns all customers and their orders with a customer name containing the given substring
     @GetMapping(value = "/namelike/{likename}", produces = "application/json")
     public ResponseEntity<?> getCustomerByNameLike(@PathVariable String likename)
     {
@@ -51,7 +51,7 @@ public class CustomerController
     }
 
     // http://localhost:2019/customers/orders/count
-    // Use a custom SQL query to return a list of all customers with the number of orders they have placed
+    // Using a custom query, return a list of all customers with the number of orders they have placed
     @GetMapping(value = "/orders/count", produces = "application/json")
     public ResponseEntity<?> getOrderCounts()
     {

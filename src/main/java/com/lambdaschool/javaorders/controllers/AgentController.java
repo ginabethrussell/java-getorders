@@ -2,7 +2,6 @@ package com.lambdaschool.javaorders.controllers;
 
 import com.lambdaschool.javaorders.models.Agent;
 import com.lambdaschool.javaorders.services.AgentServices;
-import com.lambdaschool.javaorders.services.CustomerServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,11 +17,10 @@ public class AgentController
     @Autowired
     private AgentServices agentServices;
 
-    @GetMapping(value = "/agent/{id}",
-        produces = "application/json")
-    public ResponseEntity<?> getAgentById(
-        @PathVariable
-            long id)
+    // http://localhost:2019/agents/agent{id}
+    // Returns the agent and their customers with the given agent id
+    @GetMapping(value = "/agent/{id}", produces = "application/json")
+    public ResponseEntity<?> getAgentById(@PathVariable long id)
     {
         Agent agent = agentServices.getAgentById(id);
         return new ResponseEntity<>(agent,

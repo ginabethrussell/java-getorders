@@ -1,7 +1,6 @@
 package com.lambdaschool.javaorders.controllers;
 
 import com.lambdaschool.javaorders.models.Order;
-import com.lambdaschool.javaorders.repositories.OrderRepository;
 import com.lambdaschool.javaorders.services.OrderServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +19,7 @@ public class OrderController
     @Autowired
     private OrderServices orderServices;
 
-    //http://localhost:2019/orders/order/{id}
+    // http://localhost:2019/orders/order/{id}
     // Returns the order and its customer with the given order number
     @GetMapping(value = "/order/{id}", produces = "application/json")
     public ResponseEntity<?> findOrderById(@PathVariable long id)
@@ -30,7 +29,7 @@ public class OrderController
     }
 
     // http://localhost:2019/orders/advanceamount
-    // returns all orders with their customers that have an advanceamount greater than 0
+    // Returns all orders with their customers that have an advanceamount greater than 0
     @GetMapping(value = "/advanceamount", produces = "application/json")
     public ResponseEntity<?> findOrderByAdvanceAmount()
     {
