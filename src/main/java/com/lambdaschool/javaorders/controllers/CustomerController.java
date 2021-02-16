@@ -39,4 +39,14 @@ public class CustomerController
             HttpStatus.OK);
     }
 
+    //http://localhost:2019/customers/namelike/{custname}
+    // returns a customer by id
+    @GetMapping(value = "/namelike/{custname}", produces = "application/json")
+    public ResponseEntity<?> getCustomerByNameLike(@PathVariable String custname)
+    {
+        List<Customer> customerList = customerServices.findByNameLike(custname);
+        return new ResponseEntity<>(customerList,
+            HttpStatus.OK);
+    }
+
 }
