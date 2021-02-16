@@ -1,5 +1,6 @@
 package com.lambdaschool.javaorders.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.springframework.data.repository.cdi.Eager;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class Payment
 
     // Connect to Join table for OrderPayments
     @ManyToMany(mappedBy = "payments")
+    @JsonIgnoreProperties("payments")
     private Set<Order> orders = new HashSet<>();
 
     public Payment()
