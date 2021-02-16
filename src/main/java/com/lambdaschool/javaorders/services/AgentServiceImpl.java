@@ -23,10 +23,10 @@ public class AgentServiceImpl implements AgentServices
     }
 
     @Override
-    public Agent getAgentById(long agentid)
+    public Agent getAgentById(long id)
     {
-        Agent agent = agentRepository.findById(agentid)
-        .orElseThrow(() -> new EntityNotFoundException("Agent " + agentid + " Not Found!"));
+        Agent agent = agentRepository.findById(id)
+        .orElseThrow(() -> new EntityNotFoundException("Agent " + id + " Not Found!"));
         return agent;
     }
 }

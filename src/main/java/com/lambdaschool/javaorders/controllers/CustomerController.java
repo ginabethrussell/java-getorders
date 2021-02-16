@@ -29,22 +29,22 @@ public class CustomerController
             HttpStatus.OK);
     }
 
-    //http://localhost:2019/customers/customer/{customerid}
+    //http://localhost:2019/customers/customer/{id}
     // returns a customer by id
-    @GetMapping(value = "/customer/{customerid}", produces = "application/json")
-    public ResponseEntity<?> getCustomerById(@PathVariable long customerid)
+    @GetMapping(value = "/customer/{id}", produces = "application/json")
+    public ResponseEntity<?> getCustomerById(@PathVariable long id)
     {
-        Customer customer = customerServices.getCustomerById(customerid);
+        Customer customer = customerServices.getCustomerById(id);
         return new ResponseEntity<>(customer,
             HttpStatus.OK);
     }
 
-    //http://localhost:2019/customers/namelike/{custname}
+    //http://localhost:2019/customers/namelike/{likename}
     // returns a customer by id
-    @GetMapping(value = "/namelike/{custname}", produces = "application/json")
-    public ResponseEntity<?> getCustomerByNameLike(@PathVariable String custname)
+    @GetMapping(value = "/namelike/{likename}", produces = "application/json")
+    public ResponseEntity<?> getCustomerByNameLike(@PathVariable String likename)
     {
-        List<Customer> customerList = customerServices.findByNameLike(custname);
+        List<Customer> customerList = customerServices.findByNameLike(likename);
         return new ResponseEntity<>(customerList,
             HttpStatus.OK);
     }

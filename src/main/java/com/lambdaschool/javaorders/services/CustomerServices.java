@@ -12,5 +12,5 @@ public interface CustomerServices
 
     Customer getCustomerById(long id);
 
-    List<Customer> findByNameLike(String custname);
+    List<Customer> findByNameLike(String likename);
 }

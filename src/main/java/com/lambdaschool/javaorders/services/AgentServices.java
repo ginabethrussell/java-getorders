@@ -6,5 +6,5 @@ public interface AgentServices
 {
     public Agent save(Agent agent);
 
-    Agent getAgentById(long agentid);
+    Agent getAgentById(long id);
 }

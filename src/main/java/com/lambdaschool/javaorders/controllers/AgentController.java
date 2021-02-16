@@ -18,13 +18,13 @@ public class AgentController
     @Autowired
     private AgentServices agentServices;
 
-    @GetMapping(value = "/agent/{agentId}",
+    @GetMapping(value = "/agent/{id}",
         produces = "application/json")
     public ResponseEntity<?> getAgentById(
         @PathVariable
-            long agentId)
+            long id)
     {
-        Agent agent = agentServices.getAgentById(agentId);
+        Agent agent = agentServices.getAgentById(id);
         return new ResponseEntity<>(agent,
             HttpStatus.OK);
     }
